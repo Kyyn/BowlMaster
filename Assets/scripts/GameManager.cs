@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour {
 
     private PinSetter pinSetter;
     private Ball ball;
+    private ScoreDisplay scoreDisplay;
 
 	// Use this for initialization
 	void Start () {
         pinSetter = FindObjectOfType<PinSetter>();
         ball = FindObjectOfType<Ball>();
+        scoreDisplay = FindObjectOfType<ScoreDisplay>();
 	}
 	
 	// Update is called once per frame
@@ -24,9 +26,12 @@ public class GameManager : MonoBehaviour {
     public void Bowl (int pinFall)
     {
         bowls.Add(pinFall);
-
-        ActionMaster.Action nextActon = ActionMaster.NextAction(bowls);
-        pinSetter.PerformAction(nextActon);
         ball.Reset();
+
+
+        pinSetter.PerformAction(ActionMaster.NextAction(bowls));
+
+        scoreDisplay.FillRollCard(bowls);
+        
     }
 }
