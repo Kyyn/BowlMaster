@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ActionMaster  {
 
     public enum Action {Tidy, Reset, EndTurn, EndGame}
